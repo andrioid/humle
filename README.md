@@ -2,6 +2,12 @@
 
 Composable HTML in pure Go.
 
+The name is Danish for "hops", and also sounds a lot like a drunken person saying "html". I wasn't drunk when I made this, but I might as well have been.
+
+## Warning
+
+This is very much experimental and there's not much in form of escaping behavior yet. So use at your own risk.
+
 ### But, why?
 
 I've been experimenting with [D\*](https://data-star.dev) recently and I was missing some of the ergonomics available to me when writing React/TypeScript.

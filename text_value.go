@@ -1,14 +1,17 @@
 package humle
 
-import "io"
+import (
+	"html/template"
+	"io"
+)
 
 type Text string
 
 func (n Text) Type() NodeType {
-	return NodeText
+	return NodeTextValue
 }
 
 func (n Text) WriteTo(w io.Writer) (int64, error) {
-	len, err := w.Write([]byte(n))
-	return int64(len), err
+	template.HTMLEscape(w, []byte(n))
+	return 0, nil
 }

@@ -5,24 +5,27 @@ import (
 	"strings"
 )
 
-type Attributes map[string]Attribute
+type Attributes map[string]*Attribute
 
 // Sets or merges (according to merge strategy) an attribute
-func (a *Attributes) Set(k string, v Attribute) error {
+func (a Attributes) Set(k string, newAttribute *Attribute) {
 
-	if val, ok := (*a)[k]; ok {
-		val.value = val.Merge(v.value)
-		return nil
+	// If attribute already exists, we need to merge it
+	if existing, ok := (a)[k]; ok {
+		// Using the overriding attribute's merge function we merge with the existing value
+		// - This has the advantage of merging with classes that don't use merge
+		newValue := newAttribute.Merge(existing.value, newAttribute.value)
+		existing.value = newValue
+		(a)[k] = existing
+		return
 	}
-	(*a)[k] = v
-
-	return nil
+	(a)[k] = newAttribute
 }
 
-func (a *Attributes) String() string {
-	var attributes = make([]Attribute, len(*a))
-	for _, attr := range *a {
-		attributes = append(attributes, attr)
+func (a Attributes) String() string {
+	var attributes = make([]Attribute, len(a))
+	for _, attr := range a {
+		attributes = append(attributes, *attr)
 	}
 	slices.SortFunc(attributes, func(a, b Attribute) int {
 		if a.name == "id" {

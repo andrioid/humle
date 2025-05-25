@@ -1,0 +1,5 @@
+func {{ . | CasingFunc }}(nodes ...Node) *Tag {
+    el := NewTag("{{. | CasingElement}}", nodes...)
+    el = WithVoidElement(el)
+	return el
+}

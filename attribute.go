@@ -32,7 +32,7 @@ func (a *Attribute) String() string {
 	if a.noEscape {
 		return fmt.Sprintf(`%s="%s"`, a.name, a.value)
 	}
-	// TODO: Enable and test this
+	// TODO: Add escaping for HTML entities if needed
 	return fmt.Sprintf(`%s="%s"`, a.name, a.value)
 	//return fmt.Sprintf(`%s="%s"`, a.name, template.JSEscapeString(a.value))
 }
@@ -49,9 +49,9 @@ func WithMergeStrategy(a *Attribute, mfn func(v1, v2 string) string) *Attribute 
 	return a
 }
 
-func (a *Attribute) Merge(v string) string {
+func (a *Attribute) Merge(v1, v2 string) string {
 	if a.mergeFn == nil {
-		return v
+		return v2
 	}
-	return a.mergeFn(a.value, v)
+	return a.mergeFn(v1, v2)
 }

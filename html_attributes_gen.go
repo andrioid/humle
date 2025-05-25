@@ -39,6 +39,3 @@ func Type(v string) *Attribute {
 func Value(v string) *Attribute {
 	return NewAttribute("value", v)
 }
-func Class(v string) *Attribute {
-	return NewAttribute("class", v)
-}

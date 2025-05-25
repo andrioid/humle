@@ -1,0 +1,3 @@
+func {{ . | CasingFunc }}(nodes ...Node) *Tag {
+	return NewTag("{{. | CasingElement}}", nodes...)
+}

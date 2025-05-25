@@ -2,58 +2,66 @@ package humle
 
 import (
 	"io"
+	"log"
 	"strings"
 )
 
-type Element struct {
+type Tag struct {
 	name          string
 	children      []NodeWriter
-	attributes    *Attributes
+	attributes    Attributes
 	isVoidElement bool
+	// Experimental
+	namedSignals map[string][]Node
 }
 
-func (e *Element) Type() NodeType {
-	return NodeElement
+func (e *Tag) Type() NodeType {
+	return NodeTag
 }
 
 // Identifies nodes and assigns them properly for later rendering
-func NewElement(name string, nodes ...Node) *Element {
+func NewTag(name string, nodes ...Node) *Tag {
 	el := parseNodes(name, nodes)
-	return &el
+	return el
 }
 
-func parseNodes(name string, nodes []Node) Element {
-	el := Element{
+func parseNodes(name string, nodes []Node) *Tag {
+	el := Tag{
 		name:       name,
 		children:   []NodeWriter{},
-		attributes: &Attributes{},
+		attributes: Attributes{},
 	}
 	for _, node := range nodes {
 		switch n := node.(type) {
 		case *Attribute:
 			// Store attributes for later rendering
-			el.attributes.Set(n.name, *n)
-		case *Element:
+			el.attributes.Set(n.name, n)
+		case *Tag:
 			// Children for recursive rendering
 			el.children = append(el.children, n)
-		case *Group:
+		case Group:
 			// Flattened into attributes or children
-			g := parseNodes(name, *n)
-			for _, gattr := range *g.attributes {
+			g := parseNodes(name, n)
+			for _, gattr := range g.attributes {
 				el.attributes.Set(gattr.name, gattr)
 			}
-			for _, gel := range g.children {
-				el.children = append(el.children, gel)
-			}
+			el.children = append(el.children, g.children...)
+		case RawHTML:
+			el.children = append(el.children, n)
 		case Text:
 			// Simple child node
 			el.children = append(el.children, n)
+		case *SlotNode:
+			el.children = append(el.children, n)
+
+		default:
+			log.Fatalf("Unknown node type in tag parsing: %T\n", node)
 		}
 	}
-	return el
+	return &el // We want this to be a fresh allocation
 }
 
-func (el *Element) WriteTo(w io.Writer) (int64, error) {
+func (el *Tag) WriteTo(w io.Writer) (int64, error) {
 	attrs := el.attributes.String()
 	w.Write([]byte("<" + el.name))
 	if attrs != "" {
@@ -77,14 +85,14 @@ func (el *Element) WriteTo(w io.Writer) (int64, error) {
 	return 0, nil
 }
 
-func (el *Element) String() string {
+func (el *Tag) String() string {
 	var b strings.Builder
 	el.WriteTo(&b)
 	return b.String()
 
 }
 
-func WithVoidElement(el *Element) *Element {
+func WithVoidElement(el *Tag) *Tag {
 	el.isVoidElement = true
 	return el
 }

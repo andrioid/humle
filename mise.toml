@@ -1,0 +1,19 @@
+[tools]
+go = "latest"
+watchexec = "latest"
+
+[tasks.generate]
+run = "go generate ./..."
+sources = ["**/generator.go"]
+outputs = ["**/*_gen.go"]
+
+[tasks.build]
+depends = ["generate"]
+run = "go build -race ."
+sources = ["**/*.go"]
+
+# mise watch -r test
+[tasks.test]
+depends = ["build"]
+sources = ["**/*.go"]
+run = "go test ./..."

@@ -1,5 +1,0 @@
-func {{ . | CasingFunc }}(nodes ...Node) *Element {
-    el := NewElement("{{. | CasingElement}}", nodes...)
-    el = WithVoidElement(el)
-	return el
-}

@@ -13,17 +13,26 @@ import (
 // - Use `NewElement()`or `NewAttribute()“ if you're missing something or send a PR
 // Reference: https://developer.mozilla.org/en-US/docs/Glossary/Empty_element
 var input = TemplateInput{
-	elements: []string{
+	tags: []string{
+		"html", "head", "title", "meta", "link", "style",
+		"script", "noscript", "template",
+		"article", "aside", "footer", "header", "nav",
+		"figure", "figcaption", "address",
+		"dl", "dt", "dd", "ol", "ul", "li",
+		"table", "caption", "thead", "tbody", "tfoot",
+		"tr", "th", "td", "col", "colgroup",
+		"form", "fieldset", "legend", "label",
+		"input", "select", "option", "optgroup",
 		"div", "section", "main",
 		"button", "a",
 		"h1", "h2", "h3", "p", "span",
-		"input", "label", "field",
-		"pre", "script", "link", "head", "body", "meta", "svg",
+		"field",
+		"pre", "body", "svg",
 	},
-	voidElements: []string{"br", "hr"},
+	voidTags: []string{"br", "hr"},
 	attributes: []string{
 		"id", "href", "alt", "placeholder", "src", "rel", "name",
-		"content", "charset", "lang", "type", "value", "class",
+		"content", "charset", "lang", "type", "value",
 	},
 }
 
@@ -34,15 +43,18 @@ var funcs = template.FuncMap{
 }
 
 type TemplateInput struct {
-	elements     []string
-	voidElements []string
-	attributes   []string
+	tags       []string
+	voidTags   []string
+	attributes []string
 }
 
 func FuncName(str string) string {
 	str = strings.ToLower(str)
 	switch str {
+	case "html":
+		return "HTML"
 	case "id":
+
 		return "ID"
 	default:
 		letters := strings.Split(str, "")
@@ -56,7 +68,7 @@ func main() {
 	template.Must(templates.ParseGlob("html/*.go.tmpl"))
 
 	// Create output file
-	elF, err := os.Create("html_elements_gen.go")
+	elF, err := os.Create("html_tags_gen.go")
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error creating file: %v\n", err)
 		os.Exit(1)
@@ -80,15 +92,15 @@ func main() {
 
 	// Process Elements
 	fmt.Fprintf(elF, "\n// Elements\n")
-	for _, elem := range input.elements {
-		if err := templates.ExecuteTemplate(elF, "element.go.tmpl", elem); err != nil {
+	for _, elem := range input.tags {
+		if err := templates.ExecuteTemplate(elF, "tag.go.tmpl", elem); err != nil {
 			log.Fatal(err)
 		}
 	}
 
 	fmt.Fprintf(elF, "\n// Void Elements\n")
-	for _, elem := range input.voidElements {
-		if err := templates.ExecuteTemplate(elF, "element_void.go.tmpl", elem); err != nil {
+	for _, elem := range input.voidTags {
+		if err := templates.ExecuteTemplate(elF, "tag_void.go.tmpl", elem); err != nil {
 			log.Fatal(err)
 		}
 	}
