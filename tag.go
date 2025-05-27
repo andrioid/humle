@@ -3,16 +3,13 @@ package humle
 import (
 	"io"
 	"log"
-	"strings"
 )
 
 type Tag struct {
 	name          string
-	children      []NodeWriter
+	children      []Node
 	attributes    Attributes
 	isVoidElement bool
-	// Experimental
-	namedSignals map[string][]Node
 }
 
 func (e *Tag) Type() NodeType {
@@ -28,7 +25,7 @@ func NewTag(name string, nodes ...Node) *Tag {
 func parseNodes(name string, nodes []Node) *Tag {
 	el := Tag{
 		name:       name,
-		children:   []NodeWriter{},
+		children:   []Node{},
 		attributes: Attributes{},
 	}
 	for _, node := range nodes {
@@ -46,12 +43,7 @@ func parseNodes(name string, nodes []Node) *Tag {
 				el.attributes.Set(gattr.name, gattr)
 			}
 			el.children = append(el.children, g.children...)
-		case RawHTML:
-			el.children = append(el.children, n)
-		case Text:
-			// Simple child node
-			el.children = append(el.children, n)
-		case *SlotNode:
+		case NodeWriter:
 			el.children = append(el.children, n)
 
 		default:
@@ -71,10 +63,14 @@ func (el *Tag) WriteTo(w io.Writer) (int64, error) {
 
 	// Inner
 	for _, child := range el.children {
-		if len, err := child.WriteTo(w); err != nil {
-			return len, err
+		if writer, ok := child.(NodeWriter); ok {
+			if len, err := writer.WriteTo(w); err != nil {
+				return len, err
+			}
 		}
 	}
+
+	// If there's a slot, we will render any signals that are registered for this slot
 
 	if el.isVoidElement {
 		return 0, nil
@@ -83,13 +79,6 @@ func (el *Tag) WriteTo(w io.Writer) (int64, error) {
 	w.Write([]byte("</" + el.name + ">"))
 
 	return 0, nil
-}
-
-func (el *Tag) String() string {
-	var b strings.Builder
-	el.WriteTo(&b)
-	return b.String()
-
 }
 
 func WithVoidElement(el *Tag) *Tag {

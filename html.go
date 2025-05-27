@@ -39,15 +39,19 @@ func Class(v ...string) *Attribute {
 	return a
 }
 
-func DocType() Node {
+func DocType() NodeWriter {
 	return RawHTML("<!DOCTYPE html>")
 }
 
 // Prints DocType and treats any nodes as siblings
 func Document(nodes ...Node) Group {
-	g := []Node{
+	g := Group{
 		DocType(),
-		Group(nodes),
 	}
+
+	for _, node := range nodes {
+		g = append(g, node)
+	}
+
 	return g
 }

@@ -49,7 +49,7 @@ var testMatrix2 = TestCases{
 				Head(),
 				Body(),
 			)),
-		Expected: `<!DOCTYPE html><html><head></head><body></body></html><html><head></head><body></body></html>`,
+		Expected: `<!DOCTYPE html><html><head></head><body></body></html>`,
 	},
 }
 

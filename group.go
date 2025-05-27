@@ -2,7 +2,6 @@ package humle
 
 import (
 	"io"
-	"strings"
 )
 
 type Group []Node
@@ -32,10 +31,4 @@ func (g Group) WriteTo(w io.Writer) (int64, error) {
 
 	return total, nil
 
-}
-
-func (g Group) String() string {
-	var b strings.Builder
-	g.WriteTo(&b)
-	return b.String()
 }
