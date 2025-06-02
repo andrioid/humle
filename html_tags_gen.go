@@ -3,180 +3,292 @@
 package humle
 
 // Elements
-func HTML(nodes ...Node) *Tag {
-	return NewTag("html", nodes...)
+
+func HTML(attrs ...Attribute) *Tag {
+	tag := NewTag("html", attrs...)
+	return tag
 }
-func Head(nodes ...Node) *Tag {
-	return NewTag("head", nodes...)
+
+func Head(attrs ...Attribute) *Tag {
+	tag := NewTag("head", attrs...)
+	return tag
 }
-func Title(nodes ...Node) *Tag {
-	return NewTag("title", nodes...)
+
+func Title(attrs ...Attribute) *Tag {
+	tag := NewTag("title", attrs...)
+	return tag
 }
-func Meta(nodes ...Node) *Tag {
-	return NewTag("meta", nodes...)
+
+func Meta(attrs ...Attribute) *Tag {
+	tag := NewTag("meta", attrs...)
+	return tag
 }
-func Link(nodes ...Node) *Tag {
-	return NewTag("link", nodes...)
+
+func Link(attrs ...Attribute) *Tag {
+	tag := NewTag("link", attrs...)
+	return tag
 }
-func Style(nodes ...Node) *Tag {
-	return NewTag("style", nodes...)
+
+func Style(attrs ...Attribute) *Tag {
+	tag := NewTag("style", attrs...)
+	return tag
 }
-func Script(nodes ...Node) *Tag {
-	return NewTag("script", nodes...)
+
+func Script(attrs ...Attribute) *Tag {
+	tag := NewTag("script", attrs...)
+	return tag
 }
-func Noscript(nodes ...Node) *Tag {
-	return NewTag("noscript", nodes...)
+
+func Noscript(attrs ...Attribute) *Tag {
+	tag := NewTag("noscript", attrs...)
+	return tag
 }
-func Template(nodes ...Node) *Tag {
-	return NewTag("template", nodes...)
+
+func Template(attrs ...Attribute) *Tag {
+	tag := NewTag("template", attrs...)
+	return tag
 }
-func Article(nodes ...Node) *Tag {
-	return NewTag("article", nodes...)
+
+func Article(attrs ...Attribute) *Tag {
+	tag := NewTag("article", attrs...)
+	return tag
 }
-func Aside(nodes ...Node) *Tag {
-	return NewTag("aside", nodes...)
+
+func Aside(attrs ...Attribute) *Tag {
+	tag := NewTag("aside", attrs...)
+	return tag
 }
-func Footer(nodes ...Node) *Tag {
-	return NewTag("footer", nodes...)
+
+func Footer(attrs ...Attribute) *Tag {
+	tag := NewTag("footer", attrs...)
+	return tag
 }
-func Header(nodes ...Node) *Tag {
-	return NewTag("header", nodes...)
+
+func Header(attrs ...Attribute) *Tag {
+	tag := NewTag("header", attrs...)
+	return tag
 }
-func Nav(nodes ...Node) *Tag {
-	return NewTag("nav", nodes...)
+
+func Nav(attrs ...Attribute) *Tag {
+	tag := NewTag("nav", attrs...)
+	return tag
 }
-func Figure(nodes ...Node) *Tag {
-	return NewTag("figure", nodes...)
+
+func Figure(attrs ...Attribute) *Tag {
+	tag := NewTag("figure", attrs...)
+	return tag
 }
-func Figcaption(nodes ...Node) *Tag {
-	return NewTag("figcaption", nodes...)
+
+func Figcaption(attrs ...Attribute) *Tag {
+	tag := NewTag("figcaption", attrs...)
+	return tag
 }
-func Address(nodes ...Node) *Tag {
-	return NewTag("address", nodes...)
+
+func Address(attrs ...Attribute) *Tag {
+	tag := NewTag("address", attrs...)
+	return tag
 }
-func Dl(nodes ...Node) *Tag {
-	return NewTag("dl", nodes...)
+
+func Dl(attrs ...Attribute) *Tag {
+	tag := NewTag("dl", attrs...)
+	return tag
 }
-func Dt(nodes ...Node) *Tag {
-	return NewTag("dt", nodes...)
+
+func Dt(attrs ...Attribute) *Tag {
+	tag := NewTag("dt", attrs...)
+	return tag
 }
-func Dd(nodes ...Node) *Tag {
-	return NewTag("dd", nodes...)
+
+func Dd(attrs ...Attribute) *Tag {
+	tag := NewTag("dd", attrs...)
+	return tag
 }
-func Ol(nodes ...Node) *Tag {
-	return NewTag("ol", nodes...)
+
+func Ol(attrs ...Attribute) *Tag {
+	tag := NewTag("ol", attrs...)
+	return tag
 }
-func Ul(nodes ...Node) *Tag {
-	return NewTag("ul", nodes...)
+
+func Ul(attrs ...Attribute) *Tag {
+	tag := NewTag("ul", attrs...)
+	return tag
 }
-func Li(nodes ...Node) *Tag {
-	return NewTag("li", nodes...)
+
+func Li(attrs ...Attribute) *Tag {
+	tag := NewTag("li", attrs...)
+	return tag
 }
-func Table(nodes ...Node) *Tag {
-	return NewTag("table", nodes...)
+
+func Table(attrs ...Attribute) *Tag {
+	tag := NewTag("table", attrs...)
+	return tag
 }
-func Caption(nodes ...Node) *Tag {
-	return NewTag("caption", nodes...)
+
+func Caption(attrs ...Attribute) *Tag {
+	tag := NewTag("caption", attrs...)
+	return tag
 }
-func Thead(nodes ...Node) *Tag {
-	return NewTag("thead", nodes...)
+
+func Thead(attrs ...Attribute) *Tag {
+	tag := NewTag("thead", attrs...)
+	return tag
 }
-func Tbody(nodes ...Node) *Tag {
-	return NewTag("tbody", nodes...)
+
+func Tbody(attrs ...Attribute) *Tag {
+	tag := NewTag("tbody", attrs...)
+	return tag
 }
-func Tfoot(nodes ...Node) *Tag {
-	return NewTag("tfoot", nodes...)
+
+func Tfoot(attrs ...Attribute) *Tag {
+	tag := NewTag("tfoot", attrs...)
+	return tag
 }
-func Tr(nodes ...Node) *Tag {
-	return NewTag("tr", nodes...)
+
+func Tr(attrs ...Attribute) *Tag {
+	tag := NewTag("tr", attrs...)
+	return tag
 }
-func Th(nodes ...Node) *Tag {
-	return NewTag("th", nodes...)
+
+func Th(attrs ...Attribute) *Tag {
+	tag := NewTag("th", attrs...)
+	return tag
 }
-func Td(nodes ...Node) *Tag {
-	return NewTag("td", nodes...)
+
+func Td(attrs ...Attribute) *Tag {
+	tag := NewTag("td", attrs...)
+	return tag
 }
-func Col(nodes ...Node) *Tag {
-	return NewTag("col", nodes...)
+
+func Col(attrs ...Attribute) *Tag {
+	tag := NewTag("col", attrs...)
+	return tag
 }
-func Colgroup(nodes ...Node) *Tag {
-	return NewTag("colgroup", nodes...)
+
+func Colgroup(attrs ...Attribute) *Tag {
+	tag := NewTag("colgroup", attrs...)
+	return tag
 }
-func Form(nodes ...Node) *Tag {
-	return NewTag("form", nodes...)
+
+func Form(attrs ...Attribute) *Tag {
+	tag := NewTag("form", attrs...)
+	return tag
 }
-func Fieldset(nodes ...Node) *Tag {
-	return NewTag("fieldset", nodes...)
+
+func Fieldset(attrs ...Attribute) *Tag {
+	tag := NewTag("fieldset", attrs...)
+	return tag
 }
-func Legend(nodes ...Node) *Tag {
-	return NewTag("legend", nodes...)
+
+func Legend(attrs ...Attribute) *Tag {
+	tag := NewTag("legend", attrs...)
+	return tag
 }
-func Label(nodes ...Node) *Tag {
-	return NewTag("label", nodes...)
+
+func Label(attrs ...Attribute) *Tag {
+	tag := NewTag("label", attrs...)
+	return tag
 }
-func Input(nodes ...Node) *Tag {
-	return NewTag("input", nodes...)
+
+func Input(attrs ...Attribute) *Tag {
+	tag := NewTag("input", attrs...)
+	return tag
 }
-func Select(nodes ...Node) *Tag {
-	return NewTag("select", nodes...)
+
+func Select(attrs ...Attribute) *Tag {
+	tag := NewTag("select", attrs...)
+	return tag
 }
-func Option(nodes ...Node) *Tag {
-	return NewTag("option", nodes...)
+
+func Option(attrs ...Attribute) *Tag {
+	tag := NewTag("option", attrs...)
+	return tag
 }
-func Optgroup(nodes ...Node) *Tag {
-	return NewTag("optgroup", nodes...)
+
+func Optgroup(attrs ...Attribute) *Tag {
+	tag := NewTag("optgroup", attrs...)
+	return tag
 }
-func Div(nodes ...Node) *Tag {
-	return NewTag("div", nodes...)
+
+func Div(attrs ...Attribute) *Tag {
+	tag := NewTag("div", attrs...)
+	return tag
 }
-func Section(nodes ...Node) *Tag {
-	return NewTag("section", nodes...)
+
+func Section(attrs ...Attribute) *Tag {
+	tag := NewTag("section", attrs...)
+	return tag
 }
-func Main(nodes ...Node) *Tag {
-	return NewTag("main", nodes...)
+
+func Main(attrs ...Attribute) *Tag {
+	tag := NewTag("main", attrs...)
+	return tag
 }
-func Button(nodes ...Node) *Tag {
-	return NewTag("button", nodes...)
+
+func Button(attrs ...Attribute) *Tag {
+	tag := NewTag("button", attrs...)
+	return tag
 }
-func A(nodes ...Node) *Tag {
-	return NewTag("a", nodes...)
+
+func A(attrs ...Attribute) *Tag {
+	tag := NewTag("a", attrs...)
+	return tag
 }
-func H1(nodes ...Node) *Tag {
-	return NewTag("h1", nodes...)
+
+func H1(attrs ...Attribute) *Tag {
+	tag := NewTag("h1", attrs...)
+	return tag
 }
-func H2(nodes ...Node) *Tag {
-	return NewTag("h2", nodes...)
+
+func H2(attrs ...Attribute) *Tag {
+	tag := NewTag("h2", attrs...)
+	return tag
 }
-func H3(nodes ...Node) *Tag {
-	return NewTag("h3", nodes...)
+
+func H3(attrs ...Attribute) *Tag {
+	tag := NewTag("h3", attrs...)
+	return tag
 }
-func P(nodes ...Node) *Tag {
-	return NewTag("p", nodes...)
+
+func P(attrs ...Attribute) *Tag {
+	tag := NewTag("p", attrs...)
+	return tag
 }
-func Span(nodes ...Node) *Tag {
-	return NewTag("span", nodes...)
+
+func Span(attrs ...Attribute) *Tag {
+	tag := NewTag("span", attrs...)
+	return tag
 }
-func Field(nodes ...Node) *Tag {
-	return NewTag("field", nodes...)
+
+func Field(attrs ...Attribute) *Tag {
+	tag := NewTag("field", attrs...)
+	return tag
 }
-func Pre(nodes ...Node) *Tag {
-	return NewTag("pre", nodes...)
+
+func Pre(attrs ...Attribute) *Tag {
+	tag := NewTag("pre", attrs...)
+	return tag
 }
-func Body(nodes ...Node) *Tag {
-	return NewTag("body", nodes...)
+
+func Body(attrs ...Attribute) *Tag {
+	tag := NewTag("body", attrs...)
+	return tag
 }
-func Svg(nodes ...Node) *Tag {
-	return NewTag("svg", nodes...)
+
+func Svg(attrs ...Attribute) *Tag {
+	tag := NewTag("svg", attrs...)
+	return tag
 }
 
 // Void Elements
-func Br(nodes ...Node) *Tag {
-    el := NewTag("br", nodes...)
-    el = WithVoidElement(el)
-	return el
+func Br(attrs ...Attribute) *Tag {
+	tag := NewTag("br", attrs...)
+    tag = WithVoidElement(tag)
+	return tag
 }
-func Hr(nodes ...Node) *Tag {
-    el := NewTag("hr", nodes...)
-    el = WithVoidElement(el)
-	return el
+
+func Hr(attrs ...Attribute) *Tag {
+	tag := NewTag("hr", attrs...)
+    tag = WithVoidElement(tag)
+	return tag
 }
+

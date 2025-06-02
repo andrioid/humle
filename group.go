@@ -4,7 +4,7 @@ import (
 	"io"
 )
 
-type Group []Node
+type Group []ChildNode
 
 func (g Group) Type() NodeType {
 	return NodeGroup

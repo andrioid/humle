@@ -7,7 +7,7 @@ import (
 
 type Tag struct {
 	name          string
-	children      []Node
+	children      []ChildNode
 	attributes    Attributes
 	isVoidElement bool
 }
@@ -17,40 +17,37 @@ func (e *Tag) Type() NodeType {
 }
 
 // Identifies nodes and assigns them properly for later rendering
-func NewTag(name string, nodes ...Node) *Tag {
-	el := parseNodes(name, nodes)
-	return el
-}
-
-func parseNodes(name string, nodes []Node) *Tag {
+func NewTag(name string, attrs ...Attribute) *Tag {
 	el := Tag{
 		name:       name,
-		children:   []Node{},
+		children:   []ChildNode{},
 		attributes: Attributes{},
 	}
+	el.attributes = MergeAttributes(el.attributes, attrs)
+
+	return &el
+}
+
+func (el *Tag) parseChildren(nodes []ChildNode) {
 	for _, node := range nodes {
 		switch n := node.(type) {
-		case *Attribute:
-			// Store attributes for later rendering
-			el.attributes.Set(n.name, n)
 		case *Tag:
 			// Children for recursive rendering
 			el.children = append(el.children, n)
 		case Group:
 			// Flattened into attributes or children
-			g := parseNodes(name, n)
-			for _, gattr := range g.attributes {
-				el.attributes.Set(gattr.name, gattr)
-			}
-			el.children = append(el.children, g.children...)
+			el.parseChildren(n)
 		case NodeWriter:
 			el.children = append(el.children, n)
-
 		default:
 			log.Fatalf("Unknown node type in tag parsing: %T\n", node)
 		}
 	}
-	return &el // We want this to be a fresh allocation
+}
+
+func (el *Tag) Children(children ...ChildNode) *Tag {
+	el.parseChildren(children)
+	return el
 }
 
 func (el *Tag) WriteTo(w io.Writer) (int64, error) {

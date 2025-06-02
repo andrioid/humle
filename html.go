@@ -7,12 +7,12 @@ import (
 	"github.com/Oudwins/tailwind-merge-go/pkg/twmerge"
 )
 
-func Data(k, v string) *Attribute {
+func Data(k, v string) Attribute {
 	return NewAttribute("data-"+k, v)
 }
 
 // Use this if you don't like default Class behavior of merging classes
-func AttrClass(v ...string) *Attribute {
+func AttrClass(v ...string) Attribute {
 	values := strings.Join(v, " ")
 	return WithMergeStrategy(
 		NewAttribute("class", values),
@@ -30,7 +30,7 @@ func AttrClass(v ...string) *Attribute {
 }
 
 // Class attribute with tailwind-merge functionality
-func Class(v ...string) *Attribute {
+func Class(v ...string) Attribute {
 	values := strings.Join(v, " ")
 	a := NewAttribute("class", twmerge.Merge(values))
 	WithMergeStrategy(a, func(s1, s2 string) string {
@@ -44,7 +44,7 @@ func DocType() NodeWriter {
 }
 
 // Prints DocType and treats any nodes as siblings
-func Document(nodes ...Node) Group {
+func Document(nodes ...ChildNode) Group {
 	g := Group{
 		DocType(),
 	}

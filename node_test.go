@@ -8,7 +8,7 @@ import (
 
 var testMatrix2 = TestCases{
 	"with value": TestCase{
-		Input:    Div(Text("test")),
+		Input:    Div().Children(Text("test")),
 		Expected: `<div>test</div>`,
 	},
 	"empty non-void": TestCase{
@@ -24,7 +24,7 @@ var testMatrix2 = TestCases{
 		Expected: `<br>`,
 	},
 	"with text": TestCase{
-		Input:    Div(Text("hello")),
+		Input:    Div().Children(Text("hello")),
 		Expected: `<div>hello</div>`,
 	},
 	"with id and data": TestCase{
@@ -36,7 +36,7 @@ var testMatrix2 = TestCases{
 		Expected: `<div class="bg-blue-500"></div>`,
 	},
 	"raw inside div": TestCase{
-		Input:    Div(RawHTML("<div class=\"bg-blue-500\"></div>")),
+		Input:    Div().Children(RawHTML("<div class=\"bg-blue-500\"></div>")),
 		Expected: `<div><div class="bg-blue-500"></div></div>`,
 	},
 	"document empty": TestCase{
@@ -45,8 +45,7 @@ var testMatrix2 = TestCases{
 	},
 	"document with nodes": TestCase{
 		Input: Document(
-			HTML(
-				Head(),
+			HTML().Children(Head(),
 				Body(),
 			)),
 		Expected: `<!DOCTYPE html><html><head></head><body></body></html>`,

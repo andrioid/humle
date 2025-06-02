@@ -6,22 +6,19 @@ type NodeType int
 
 const (
 	NodeTag = iota
-	NodeAttribute
 	NodeTextValue
 	NodeGroup
 	NodeRawHTML
-	NodeSlot
-	NodeSignal
-	//NodeReader // TODO: Allow us to pass io.Reader like files to it
+	NodeComponent
 )
 
-type Node interface {
+type ChildNode interface {
 	Type() NodeType
 }
 
 // A node capable of writing HTML. Can be used as children
 // E.g. Element, Text
 type NodeWriter interface {
-	Node
+	ChildNode
 	io.WriterTo
 }

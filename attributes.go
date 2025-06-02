@@ -5,10 +5,17 @@ import (
 	"strings"
 )
 
-type Attributes map[string]*Attribute
+type Attributes map[string]Attribute
+
+func MergeAttributes(a Attributes, attrs []Attribute) Attributes {
+	for _, v := range attrs {
+		a.Set(v.name, v)
+	}
+	return a
+}
 
 // Sets or merges (according to merge strategy) an attribute
-func (a Attributes) Set(k string, newAttribute *Attribute) {
+func (a Attributes) Set(k string, newAttribute Attribute) {
 
 	// If attribute already exists, we need to merge it
 	if existing, ok := (a)[k]; ok {
@@ -25,7 +32,7 @@ func (a Attributes) Set(k string, newAttribute *Attribute) {
 func (a Attributes) String() string {
 	var attributes = make([]Attribute, len(a))
 	for _, attr := range a {
-		attributes = append(attributes, *attr)
+		attributes = append(attributes, attr)
 	}
 	slices.SortFunc(attributes, func(a, b Attribute) int {
 		if a.name == "id" {
