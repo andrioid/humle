@@ -8,7 +8,7 @@ import (
 type Tag struct {
 	name          string
 	children      []Node
-	attributes    Attributes
+	arguments     Arguments
 	isVoidElement bool
 }
 
@@ -17,13 +17,13 @@ func (e *Tag) Type() NodeType {
 }
 
 // Identifies nodes and assigns them properly for later rendering
-func NewTag(name string, attrs ...Attribute) *Tag {
+func NewTag(name string, args ...Argument) *Tag {
 	el := Tag{
-		name:       name,
-		children:   []Node{},
-		attributes: Attributes{},
+		name:      name,
+		children:  []Node{},
+		arguments: Arguments{},
 	}
-	el.attributes = MergeAttributes(el.attributes, attrs)
+	el.arguments = args
 
 	return &el
 }
@@ -51,7 +51,7 @@ func (el *Tag) Children(children ...Node) *Tag {
 }
 
 func (el *Tag) WriteTo(w io.Writer) (int64, error) {
-	attrs := el.attributes.String()
+	attrs := el.arguments.GetAttributes().String()
 	w.Write([]byte("<" + el.name))
 	if attrs != "" {
 		w.Write([]byte(" " + attrs))
@@ -60,14 +60,16 @@ func (el *Tag) WriteTo(w io.Writer) (int64, error) {
 
 	// Inner
 	for _, child := range el.children {
-		if writer, ok := child.(Node); ok {
-			if len, err := writer.WriteTo(w); err != nil {
-				return len, err
-			}
+		if len, err := child.WriteTo(w); err != nil {
+			return len, err
 		}
 	}
-
-	// If there's a slot, we will render any signals that are registered for this slot
+	// Node-like attributes
+	for _, child := range el.arguments {
+		if n, ok := child.(Node); ok {
+			n.WriteTo(w)
+		}
+	}
 
 	if el.isVoidElement {
 		return 0, nil

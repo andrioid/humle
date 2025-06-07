@@ -1,5 +1,5 @@
-func {{ . | CasingFunc }}(attrs ...Attribute) *Tag {
-	tag := NewTag("{{. | CasingElement}}", attrs...)
+func {{ . | CasingFunc }}(args ...Argument) *Tag {
+	tag := NewTag("{{. | CasingElement}}", args...)
     tag = WithVoidElement(tag)
 	return tag
 }

@@ -4,290 +4,290 @@ package humle
 
 // Elements
 
-func HTML(attrs ...Attribute) *Tag {
-	tag := NewTag("html", attrs...)
+func HTML(args ...Argument) *Tag {
+	tag := NewTag("html", args...)
 	return tag
 }
 
-func Head(attrs ...Attribute) *Tag {
-	tag := NewTag("head", attrs...)
+func Head(args ...Argument) *Tag {
+	tag := NewTag("head", args...)
 	return tag
 }
 
-func Title(attrs ...Attribute) *Tag {
-	tag := NewTag("title", attrs...)
+func Title(args ...Argument) *Tag {
+	tag := NewTag("title", args...)
 	return tag
 }
 
-func Meta(attrs ...Attribute) *Tag {
-	tag := NewTag("meta", attrs...)
+func Meta(args ...Argument) *Tag {
+	tag := NewTag("meta", args...)
 	return tag
 }
 
-func Link(attrs ...Attribute) *Tag {
-	tag := NewTag("link", attrs...)
+func Link(args ...Argument) *Tag {
+	tag := NewTag("link", args...)
 	return tag
 }
 
-func Style(attrs ...Attribute) *Tag {
-	tag := NewTag("style", attrs...)
+func Style(args ...Argument) *Tag {
+	tag := NewTag("style", args...)
 	return tag
 }
 
-func Script(attrs ...Attribute) *Tag {
-	tag := NewTag("script", attrs...)
+func Script(args ...Argument) *Tag {
+	tag := NewTag("script", args...)
 	return tag
 }
 
-func Noscript(attrs ...Attribute) *Tag {
-	tag := NewTag("noscript", attrs...)
+func Noscript(args ...Argument) *Tag {
+	tag := NewTag("noscript", args...)
 	return tag
 }
 
-func Template(attrs ...Attribute) *Tag {
-	tag := NewTag("template", attrs...)
+func Template(args ...Argument) *Tag {
+	tag := NewTag("template", args...)
 	return tag
 }
 
-func Article(attrs ...Attribute) *Tag {
-	tag := NewTag("article", attrs...)
+func Article(args ...Argument) *Tag {
+	tag := NewTag("article", args...)
 	return tag
 }
 
-func Aside(attrs ...Attribute) *Tag {
-	tag := NewTag("aside", attrs...)
+func Aside(args ...Argument) *Tag {
+	tag := NewTag("aside", args...)
 	return tag
 }
 
-func Footer(attrs ...Attribute) *Tag {
-	tag := NewTag("footer", attrs...)
+func Footer(args ...Argument) *Tag {
+	tag := NewTag("footer", args...)
 	return tag
 }
 
-func Header(attrs ...Attribute) *Tag {
-	tag := NewTag("header", attrs...)
+func Header(args ...Argument) *Tag {
+	tag := NewTag("header", args...)
 	return tag
 }
 
-func Nav(attrs ...Attribute) *Tag {
-	tag := NewTag("nav", attrs...)
+func Nav(args ...Argument) *Tag {
+	tag := NewTag("nav", args...)
 	return tag
 }
 
-func Figure(attrs ...Attribute) *Tag {
-	tag := NewTag("figure", attrs...)
+func Figure(args ...Argument) *Tag {
+	tag := NewTag("figure", args...)
 	return tag
 }
 
-func Figcaption(attrs ...Attribute) *Tag {
-	tag := NewTag("figcaption", attrs...)
+func Figcaption(args ...Argument) *Tag {
+	tag := NewTag("figcaption", args...)
 	return tag
 }
 
-func Address(attrs ...Attribute) *Tag {
-	tag := NewTag("address", attrs...)
+func Address(args ...Argument) *Tag {
+	tag := NewTag("address", args...)
 	return tag
 }
 
-func Dl(attrs ...Attribute) *Tag {
-	tag := NewTag("dl", attrs...)
+func Dl(args ...Argument) *Tag {
+	tag := NewTag("dl", args...)
 	return tag
 }
 
-func Dt(attrs ...Attribute) *Tag {
-	tag := NewTag("dt", attrs...)
+func Dt(args ...Argument) *Tag {
+	tag := NewTag("dt", args...)
 	return tag
 }
 
-func Dd(attrs ...Attribute) *Tag {
-	tag := NewTag("dd", attrs...)
+func Dd(args ...Argument) *Tag {
+	tag := NewTag("dd", args...)
 	return tag
 }
 
-func Ol(attrs ...Attribute) *Tag {
-	tag := NewTag("ol", attrs...)
+func Ol(args ...Argument) *Tag {
+	tag := NewTag("ol", args...)
 	return tag
 }
 
-func Ul(attrs ...Attribute) *Tag {
-	tag := NewTag("ul", attrs...)
+func Ul(args ...Argument) *Tag {
+	tag := NewTag("ul", args...)
 	return tag
 }
 
-func Li(attrs ...Attribute) *Tag {
-	tag := NewTag("li", attrs...)
+func Li(args ...Argument) *Tag {
+	tag := NewTag("li", args...)
 	return tag
 }
 
-func Table(attrs ...Attribute) *Tag {
-	tag := NewTag("table", attrs...)
+func Table(args ...Argument) *Tag {
+	tag := NewTag("table", args...)
 	return tag
 }
 
-func Caption(attrs ...Attribute) *Tag {
-	tag := NewTag("caption", attrs...)
+func Caption(args ...Argument) *Tag {
+	tag := NewTag("caption", args...)
 	return tag
 }
 
-func Thead(attrs ...Attribute) *Tag {
-	tag := NewTag("thead", attrs...)
+func Thead(args ...Argument) *Tag {
+	tag := NewTag("thead", args...)
 	return tag
 }
 
-func Tbody(attrs ...Attribute) *Tag {
-	tag := NewTag("tbody", attrs...)
+func Tbody(args ...Argument) *Tag {
+	tag := NewTag("tbody", args...)
 	return tag
 }
 
-func Tfoot(attrs ...Attribute) *Tag {
-	tag := NewTag("tfoot", attrs...)
+func Tfoot(args ...Argument) *Tag {
+	tag := NewTag("tfoot", args...)
 	return tag
 }
 
-func Tr(attrs ...Attribute) *Tag {
-	tag := NewTag("tr", attrs...)
+func Tr(args ...Argument) *Tag {
+	tag := NewTag("tr", args...)
 	return tag
 }
 
-func Th(attrs ...Attribute) *Tag {
-	tag := NewTag("th", attrs...)
+func Th(args ...Argument) *Tag {
+	tag := NewTag("th", args...)
 	return tag
 }
 
-func Td(attrs ...Attribute) *Tag {
-	tag := NewTag("td", attrs...)
+func Td(args ...Argument) *Tag {
+	tag := NewTag("td", args...)
 	return tag
 }
 
-func Col(attrs ...Attribute) *Tag {
-	tag := NewTag("col", attrs...)
+func Col(args ...Argument) *Tag {
+	tag := NewTag("col", args...)
 	return tag
 }
 
-func Colgroup(attrs ...Attribute) *Tag {
-	tag := NewTag("colgroup", attrs...)
+func Colgroup(args ...Argument) *Tag {
+	tag := NewTag("colgroup", args...)
 	return tag
 }
 
-func Form(attrs ...Attribute) *Tag {
-	tag := NewTag("form", attrs...)
+func Form(args ...Argument) *Tag {
+	tag := NewTag("form", args...)
 	return tag
 }
 
-func Fieldset(attrs ...Attribute) *Tag {
-	tag := NewTag("fieldset", attrs...)
+func Fieldset(args ...Argument) *Tag {
+	tag := NewTag("fieldset", args...)
 	return tag
 }
 
-func Legend(attrs ...Attribute) *Tag {
-	tag := NewTag("legend", attrs...)
+func Legend(args ...Argument) *Tag {
+	tag := NewTag("legend", args...)
 	return tag
 }
 
-func Label(attrs ...Attribute) *Tag {
-	tag := NewTag("label", attrs...)
+func Label(args ...Argument) *Tag {
+	tag := NewTag("label", args...)
 	return tag
 }
 
-func Input(attrs ...Attribute) *Tag {
-	tag := NewTag("input", attrs...)
+func Input(args ...Argument) *Tag {
+	tag := NewTag("input", args...)
 	return tag
 }
 
-func Select(attrs ...Attribute) *Tag {
-	tag := NewTag("select", attrs...)
+func Select(args ...Argument) *Tag {
+	tag := NewTag("select", args...)
 	return tag
 }
 
-func Option(attrs ...Attribute) *Tag {
-	tag := NewTag("option", attrs...)
+func Option(args ...Argument) *Tag {
+	tag := NewTag("option", args...)
 	return tag
 }
 
-func Optgroup(attrs ...Attribute) *Tag {
-	tag := NewTag("optgroup", attrs...)
+func Optgroup(args ...Argument) *Tag {
+	tag := NewTag("optgroup", args...)
 	return tag
 }
 
-func Div(attrs ...Attribute) *Tag {
-	tag := NewTag("div", attrs...)
+func Div(args ...Argument) *Tag {
+	tag := NewTag("div", args...)
 	return tag
 }
 
-func Section(attrs ...Attribute) *Tag {
-	tag := NewTag("section", attrs...)
+func Section(args ...Argument) *Tag {
+	tag := NewTag("section", args...)
 	return tag
 }
 
-func Main(attrs ...Attribute) *Tag {
-	tag := NewTag("main", attrs...)
+func Main(args ...Argument) *Tag {
+	tag := NewTag("main", args...)
 	return tag
 }
 
-func Button(attrs ...Attribute) *Tag {
-	tag := NewTag("button", attrs...)
+func Button(args ...Argument) *Tag {
+	tag := NewTag("button", args...)
 	return tag
 }
 
-func A(attrs ...Attribute) *Tag {
-	tag := NewTag("a", attrs...)
+func A(args ...Argument) *Tag {
+	tag := NewTag("a", args...)
 	return tag
 }
 
-func H1(attrs ...Attribute) *Tag {
-	tag := NewTag("h1", attrs...)
+func H1(args ...Argument) *Tag {
+	tag := NewTag("h1", args...)
 	return tag
 }
 
-func H2(attrs ...Attribute) *Tag {
-	tag := NewTag("h2", attrs...)
+func H2(args ...Argument) *Tag {
+	tag := NewTag("h2", args...)
 	return tag
 }
 
-func H3(attrs ...Attribute) *Tag {
-	tag := NewTag("h3", attrs...)
+func H3(args ...Argument) *Tag {
+	tag := NewTag("h3", args...)
 	return tag
 }
 
-func P(attrs ...Attribute) *Tag {
-	tag := NewTag("p", attrs...)
+func P(args ...Argument) *Tag {
+	tag := NewTag("p", args...)
 	return tag
 }
 
-func Span(attrs ...Attribute) *Tag {
-	tag := NewTag("span", attrs...)
+func Span(args ...Argument) *Tag {
+	tag := NewTag("span", args...)
 	return tag
 }
 
-func Field(attrs ...Attribute) *Tag {
-	tag := NewTag("field", attrs...)
+func Field(args ...Argument) *Tag {
+	tag := NewTag("field", args...)
 	return tag
 }
 
-func Pre(attrs ...Attribute) *Tag {
-	tag := NewTag("pre", attrs...)
+func Pre(args ...Argument) *Tag {
+	tag := NewTag("pre", args...)
 	return tag
 }
 
-func Body(attrs ...Attribute) *Tag {
-	tag := NewTag("body", attrs...)
+func Body(args ...Argument) *Tag {
+	tag := NewTag("body", args...)
 	return tag
 }
 
-func Svg(attrs ...Attribute) *Tag {
-	tag := NewTag("svg", attrs...)
+func Svg(args ...Argument) *Tag {
+	tag := NewTag("svg", args...)
 	return tag
 }
 
 // Void Elements
-func Br(attrs ...Attribute) *Tag {
-	tag := NewTag("br", attrs...)
+func Br(args ...Argument) *Tag {
+	tag := NewTag("br", args...)
     tag = WithVoidElement(tag)
 	return tag
 }
 
-func Hr(attrs ...Attribute) *Tag {
-	tag := NewTag("hr", attrs...)
+func Hr(args ...Argument) *Tag {
+	tag := NewTag("hr", args...)
     tag = WithVoidElement(tag)
 	return tag
 }
