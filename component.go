@@ -7,7 +7,7 @@ import (
 
 type RenderFunc func(args []Argument, children Node) *Tag
 
-type componentModel struct {
+type Component struct {
 	// Name is mostly for debugging and maybe future web component
 	Name       string
 	args       []Argument
@@ -15,15 +15,19 @@ type componentModel struct {
 	renderFunc RenderFunc
 }
 
-func NewComponent(name string, render RenderFunc) *componentModel {
-	return &componentModel{
+func NewComponent(name string, render RenderFunc) *Component {
+	return &Component{
 		Name:       name,
 		renderFunc: render,
 		args:       []Argument{},
 	}
 }
 
-func (c *componentModel) WriteTo(w io.Writer) (int64, error) {
+func (c *Component) WriteTo(w io.Writer) (int64, error) {
 	t := c.renderFunc(c.args, c.childNode)
 	return t.WriteTo(w)
+}
+
+func (c *Component) Type() NodeType {
+	return NodeComponent
 }
