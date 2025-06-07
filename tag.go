@@ -7,7 +7,7 @@ import (
 
 type Tag struct {
 	name          string
-	children      []ChildNode
+	children      []Node
 	attributes    Attributes
 	isVoidElement bool
 }
@@ -20,7 +20,7 @@ func (e *Tag) Type() NodeType {
 func NewTag(name string, attrs ...Attribute) *Tag {
 	el := Tag{
 		name:       name,
-		children:   []ChildNode{},
+		children:   []Node{},
 		attributes: Attributes{},
 	}
 	el.attributes = MergeAttributes(el.attributes, attrs)
@@ -28,7 +28,7 @@ func NewTag(name string, attrs ...Attribute) *Tag {
 	return &el
 }
 
-func (el *Tag) parseChildren(nodes []ChildNode) {
+func (el *Tag) parseChildren(nodes []Node) {
 	for _, node := range nodes {
 		switch n := node.(type) {
 		case *Tag:
@@ -37,7 +37,7 @@ func (el *Tag) parseChildren(nodes []ChildNode) {
 		case Group:
 			// Flattened into attributes or children
 			el.parseChildren(n)
-		case NodeWriter:
+		case Node:
 			el.children = append(el.children, n)
 		default:
 			log.Fatalf("Unknown node type in tag parsing: %T\n", node)
@@ -45,7 +45,7 @@ func (el *Tag) parseChildren(nodes []ChildNode) {
 	}
 }
 
-func (el *Tag) Children(children ...ChildNode) *Tag {
+func (el *Tag) Children(children ...Node) *Tag {
 	el.parseChildren(children)
 	return el
 }
@@ -60,7 +60,7 @@ func (el *Tag) WriteTo(w io.Writer) (int64, error) {
 
 	// Inner
 	for _, child := range el.children {
-		if writer, ok := child.(NodeWriter); ok {
+		if writer, ok := child.(Node); ok {
 			if len, err := writer.WriteTo(w); err != nil {
 				return len, err
 			}

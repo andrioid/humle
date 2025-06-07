@@ -39,12 +39,12 @@ func Class(v ...string) Attribute {
 	return a
 }
 
-func DocType() NodeWriter {
+func DocType() Node {
 	return RawHTML("<!DOCTYPE html>")
 }
 
 // Prints DocType and treats any nodes as siblings
-func Document(nodes ...ChildNode) Group {
+func Document(nodes ...Node) Group {
 	g := Group{
 		DocType(),
 	}

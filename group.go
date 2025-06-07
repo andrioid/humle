@@ -4,7 +4,7 @@ import (
 	"io"
 )
 
-type Group []ChildNode
+type Group []Node
 
 func (g Group) Type() NodeType {
 	return NodeGroup
@@ -20,12 +20,10 @@ func (g Group) WriteTo(w io.Writer) (int64, error) {
 				return total, err
 			}
 		}
-		if writable, ok := node.(NodeWriter); ok {
-			wb, err := writable.WriteTo(w)
-			total += wb
-			if err != nil {
-				return total, err
-			}
+		wb, err := node.WriteTo(w)
+		total += wb
+		if err != nil {
+			return total, err
 		}
 	}
 

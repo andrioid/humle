@@ -6,7 +6,7 @@ import (
 )
 
 type TestCase struct {
-	Input    NodeWriter
+	Input    Node
 	Expected string
 }
 

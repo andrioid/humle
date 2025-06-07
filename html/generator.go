@@ -12,6 +12,13 @@ import (
 // - Note: There are no plans to generate all of HTML. Only what we need.
 // - Use `NewElement()`or `NewAttribute()“ if you're missing something or send a PR
 // Reference: https://developer.mozilla.org/en-US/docs/Glossary/Empty_element
+type elementInput struct {
+	name string
+	// override function name
+	funcName string
+	isVoid   bool
+}
+
 var input = TemplateInput{
 	tags: []string{
 		"html", "head", "title", "meta", "link", "style",

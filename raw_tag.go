@@ -4,7 +4,7 @@ import (
 	"io"
 )
 
-// Satisfies NodeWriter interface
+// Satisfies Node interface
 // RawHTML is a node that represents raw HTML content.
 // It does not escape the content, so it should be used with caution.
 type RawHTML string

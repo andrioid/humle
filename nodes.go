@@ -12,13 +12,7 @@ const (
 	NodeComponent
 )
 
-type ChildNode interface {
+type Node interface {
 	Type() NodeType
-}
-
-// A node capable of writing HTML. Can be used as children
-// E.g. Element, Text
-type NodeWriter interface {
-	ChildNode
 	io.WriterTo
 }
