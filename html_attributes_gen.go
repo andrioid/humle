@@ -4,50 +4,50 @@ package humle
 
 // Attributes
 func ID(v string) Attribute {
-	return NewAttribute("id", v)
+	return Attr("id", v)
 }
 
 func Href(v string) Attribute {
-	return NewAttribute("href", v)
+	return Attr("href", v)
 }
 
 func Alt(v string) Attribute {
-	return NewAttribute("alt", v)
+	return Attr("alt", v)
 }
 
 func Placeholder(v string) Attribute {
-	return NewAttribute("placeholder", v)
+	return Attr("placeholder", v)
 }
 
 func Src(v string) Attribute {
-	return NewAttribute("src", v)
+	return Attr("src", v)
 }
 
 func Rel(v string) Attribute {
-	return NewAttribute("rel", v)
+	return Attr("rel", v)
 }
 
 func Name(v string) Attribute {
-	return NewAttribute("name", v)
+	return Attr("name", v)
 }
 
 func Content(v string) Attribute {
-	return NewAttribute("content", v)
+	return Attr("content", v)
 }
 
 func Charset(v string) Attribute {
-	return NewAttribute("charset", v)
+	return Attr("charset", v)
 }
 
 func Lang(v string) Attribute {
-	return NewAttribute("lang", v)
+	return Attr("lang", v)
 }
 
 func Type(v string) Attribute {
-	return NewAttribute("type", v)
+	return Attr("type", v)
 }
 
 func Value(v string) Attribute {
-	return NewAttribute("value", v)
+	return Attr("value", v)
 }
 

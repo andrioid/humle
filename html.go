@@ -8,14 +8,14 @@ import (
 )
 
 func Data(k, v string) Attribute {
-	return NewAttribute("data-"+k, v)
+	return Attr("data-"+k, v)
 }
 
 // Use this if you don't like default Class behavior of merging classes
 func AttrClass(v ...string) Attribute {
 	values := strings.Join(v, " ")
 	return WithMergeStrategy(
-		NewAttribute("class", values),
+		Attr("class", values),
 		func(v1, v2 string) string {
 			if v1 == "" {
 				return v2
@@ -32,7 +32,7 @@ func AttrClass(v ...string) Attribute {
 // Class attribute with tailwind-merge functionality
 func Class(v ...string) Attribute {
 	values := strings.Join(v, " ")
-	a := NewAttribute("class", twmerge.Merge(values))
+	a := Attr("class", twmerge.Merge(values))
 	WithMergeStrategy(a, func(s1, s2 string) string {
 		return twmerge.Merge(s1, s2)
 	})

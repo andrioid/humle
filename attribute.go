@@ -11,7 +11,7 @@ type Attribute struct {
 	noEscape bool
 }
 
-func NewAttribute(name, value string) Attribute {
+func Attr(name, value string) Attribute {
 	return Attribute{
 		name:  name,
 		value: value,
