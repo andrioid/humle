@@ -5,7 +5,7 @@ import (
 	"io"
 )
 
-type RenderFunc func(args []Argument, children Node) *Tag
+type RenderFunc func(args []Argument, children Node) Node
 
 type Component struct {
 	// Name is mostly for debugging and maybe future web component

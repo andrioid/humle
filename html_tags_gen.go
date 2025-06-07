@@ -19,11 +19,6 @@ func Title(args ...Argument) *Tag {
 	return tag
 }
 
-func Meta(args ...Argument) *Tag {
-	tag := NewTag("meta", args...)
-	return tag
-}
-
 func Link(args ...Argument) *Tag {
 	tag := NewTag("link", args...)
 	return tag
@@ -288,6 +283,12 @@ func Br(args ...Argument) *Tag {
 
 func Hr(args ...Argument) *Tag {
 	tag := NewTag("hr", args...)
+    tag = WithVoidElement(tag)
+	return tag
+}
+
+func Meta(args ...Argument) *Tag {
+	tag := NewTag("meta", args...)
     tag = WithVoidElement(tag)
 	return tag
 }

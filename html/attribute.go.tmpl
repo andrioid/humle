@@ -1,4 +1,4 @@
-func {{ . | CasingFunc }}(v string) Attribute {
+func {{ . | CasingFunc }}(v string) Argument {
 	return Attr("{{. | CasingAttribute }}", v)
 }
 

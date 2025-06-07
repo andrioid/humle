@@ -21,7 +21,7 @@ type elementInput struct {
 
 var input = TemplateInput{
 	tags: []string{
-		"html", "head", "title", "meta", "link", "style",
+		"html", "head", "title", "link", "style",
 		"script", "noscript", "template",
 		"article", "aside", "footer", "header", "nav",
 		"figure", "figcaption", "address",
@@ -36,7 +36,7 @@ var input = TemplateInput{
 		"field",
 		"pre", "body", "svg",
 	},
-	voidTags: []string{"br", "hr"},
+	voidTags: []string{"br", "hr", "meta"},
 	attributes: []string{
 		"id", "href", "alt", "placeholder", "src", "rel", "name",
 		"content", "charset", "lang", "type", "value",

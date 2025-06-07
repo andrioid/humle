@@ -14,7 +14,7 @@ type attribute struct {
 func Attr(name, value string) attribute {
 	return attribute{
 		name:  name,
-		value: value,
+		value: "fisk",
 	}
 }
 
