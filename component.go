@@ -1,27 +1,25 @@
 // Component allows us to more deeply control how arguments and children are handled
-package component
+package humle
 
 import (
 	"io"
-
-	h "github.com/andrioid/humle"
 )
 
-type renderFunc func(args []h.Argument, children h.Node) *h.Tag
+type RenderFunc func(args []Argument, children Node) *Tag
 
 type componentModel struct {
 	// Name is mostly for debugging and maybe future web component
 	Name       string
-	args       []h.Argument
-	childNode  h.Node
-	renderFunc renderFunc
+	args       []Argument
+	childNode  Node
+	renderFunc RenderFunc
 }
 
-func NewComponent(name string, render renderFunc) *componentModel {
+func NewComponent(name string, render RenderFunc) *componentModel {
 	return &componentModel{
 		Name:       name,
 		renderFunc: render,
-		args:       []h.Argument{},
+		args:       []Argument{},
 	}
 }
 
