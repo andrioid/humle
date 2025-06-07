@@ -3,51 +3,51 @@
 package humle
 
 // Attributes
-func ID(v string) Attribute {
+func ID(v string) attribute {
 	return Attr("id", v)
 }
 
-func Href(v string) Attribute {
+func Href(v string) attribute {
 	return Attr("href", v)
 }
 
-func Alt(v string) Attribute {
+func Alt(v string) attribute {
 	return Attr("alt", v)
 }
 
-func Placeholder(v string) Attribute {
+func Placeholder(v string) attribute {
 	return Attr("placeholder", v)
 }
 
-func Src(v string) Attribute {
+func Src(v string) attribute {
 	return Attr("src", v)
 }
 
-func Rel(v string) Attribute {
+func Rel(v string) attribute {
 	return Attr("rel", v)
 }
 
-func Name(v string) Attribute {
+func Name(v string) attribute {
 	return Attr("name", v)
 }
 
-func Content(v string) Attribute {
+func Content(v string) attribute {
 	return Attr("content", v)
 }
 
-func Charset(v string) Attribute {
+func Charset(v string) attribute {
 	return Attr("charset", v)
 }
 
-func Lang(v string) Attribute {
+func Lang(v string) attribute {
 	return Attr("lang", v)
 }
 
-func Type(v string) Attribute {
+func Type(v string) attribute {
 	return Attr("type", v)
 }
 
-func Value(v string) Attribute {
+func Value(v string) attribute {
 	return Attr("value", v)
 }
 

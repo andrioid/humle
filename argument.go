@@ -19,7 +19,7 @@ func (args Arguments) GetAttributes() Attributes {
 	attributes := Attributes{}
 	for _, arg := range args {
 		switch t := arg.(type) {
-		case Attribute:
+		case attribute:
 			attributes[t.name] = t
 		}
 	}
