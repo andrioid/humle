@@ -1,6 +1,8 @@
 package humle
 
-import "io"
+import (
+	"io"
+)
 
 type NodeType int
 
@@ -15,4 +17,5 @@ const (
 type Node interface {
 	Type() NodeType
 	io.WriterTo
+	String() string
 }

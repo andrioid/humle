@@ -2,6 +2,7 @@ package humle
 
 import (
 	"fmt"
+	"html/template"
 )
 
 type attribute struct {
@@ -14,7 +15,7 @@ type attribute struct {
 func Attr(name, value string) attribute {
 	return attribute{
 		name:  name,
-		value: "fisk",
+		value: value,
 	}
 }
 
@@ -29,7 +30,7 @@ func (a attribute) String() string {
 		return fmt.Sprintf(`%s="%s"`, a.name, a.value)
 	}
 	// TODO: Add escaping for HTML entities if needed
-	return fmt.Sprintf(`%s="%s"`, a.name, a.value)
+	return fmt.Sprintf(`%s="%s"`, a.name, template.HTMLEscapeString(a.value))
 	//return fmt.Sprintf(`%s="%s"`, a.name, template.JSEscapeString(a.value))
 }
 

@@ -2,16 +2,17 @@
 package humle
 
 import (
+	"errors"
 	"io"
+	"strings"
 )
 
-type RenderFunc func(args []Argument, children Node) Node
+type RenderFunc func() Node
 
 type Component struct {
 	// Name is mostly for debugging and maybe future web component
 	Name       string
 	args       []Argument
-	childNode  Node
 	renderFunc RenderFunc
 }
 
@@ -24,8 +25,17 @@ func NewComponent(name string, render RenderFunc) *Component {
 }
 
 func (c *Component) WriteTo(w io.Writer) (int64, error) {
-	t := c.renderFunc(c.args, c.childNode)
+	if c.renderFunc == nil {
+		return 0, errors.New("Component has no render method")
+	}
+	t := c.renderFunc()
 	return t.WriteTo(w)
+}
+
+func (n *Component) String() string {
+	var b strings.Builder
+	n.WriteTo(&b)
+	return b.String()
 }
 
 func (c *Component) Type() NodeType {

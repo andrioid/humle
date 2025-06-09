@@ -3,22 +3,23 @@ package humle
 import (
 	"io"
 	"log"
+	"strings"
 )
 
-type Tag struct {
+type TagNode struct {
 	name          string
 	children      []Node
 	arguments     Arguments
 	isVoidElement bool
 }
 
-func (e *Tag) Type() NodeType {
+func (e *TagNode) Type() NodeType {
 	return NodeTag
 }
 
 // Identifies nodes and assigns them properly for later rendering
-func NewTag(name string, args ...Argument) *Tag {
-	el := Tag{
+func Tag(name string, args ...Argument) *TagNode {
+	el := TagNode{
 		name:      name,
 		children:  []Node{},
 		arguments: Arguments{},
@@ -28,10 +29,10 @@ func NewTag(name string, args ...Argument) *Tag {
 	return &el
 }
 
-func (el *Tag) parseChildren(nodes []Node) {
+func (el *TagNode) parseChildren(nodes []Node) {
 	for _, node := range nodes {
 		switch n := node.(type) {
-		case *Tag:
+		case *TagNode:
 			// Children for recursive rendering
 			el.children = append(el.children, n)
 		case Group:
@@ -45,12 +46,12 @@ func (el *Tag) parseChildren(nodes []Node) {
 	}
 }
 
-func (el *Tag) Children(children ...Node) *Tag {
+func (el *TagNode) Children(children ...Node) *TagNode {
 	el.parseChildren(children)
 	return el
 }
 
-func (el *Tag) WriteTo(w io.Writer) (int64, error) {
+func (el *TagNode) WriteTo(w io.Writer) (int64, error) {
 	attrs := el.arguments.GetAttributes().String()
 	w.Write([]byte("<" + el.name))
 	if attrs != "" {
@@ -80,7 +81,13 @@ func (el *Tag) WriteTo(w io.Writer) (int64, error) {
 	return 0, nil
 }
 
-func WithVoidElement(el *Tag) *Tag {
+func (n *TagNode) String() string {
+	var b strings.Builder
+	n.WriteTo(&b)
+	return b.String()
+}
+
+func WithVoidElement(el *TagNode) *TagNode {
 	el.isVoidElement = true
 	return el
 }

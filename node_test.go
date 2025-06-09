@@ -1,6 +1,8 @@
 package humle_test
 
 import (
+	"fmt"
+	"html/template"
 	"testing"
 
 	. "github.com/andrioid/humle"
@@ -29,7 +31,7 @@ var testMatrix2 = TestCases{
 	},
 	"with id and data": TestCase{
 		Input:    Div(ID("divid"), Data("show", `$tab === 'logs'`)),
-		Expected: `<div id="divid" data-show="$tab === 'logs'"></div>`,
+		Expected: fmt.Sprintf(`<div id="divid" data-show="%s"></div>`, template.HTMLEscapeString("$tab === 'logs'")),
 	},
 	"raw": TestCase{
 		Input:    RawHTML("<div class=\"bg-blue-500\"></div>"),
